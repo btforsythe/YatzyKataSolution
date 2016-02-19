@@ -3,7 +3,7 @@ package org.btforsythe.yatzy;
 public class ScoringStrategies {
 
 	public static ScoringStrategy chance() {
-		return (rolls) -> { return 0;};
+		return (rolls) -> { return rolls.length > 0? rolls[0]: 0;};
 	}
 
 }

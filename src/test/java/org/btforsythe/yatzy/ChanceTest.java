@@ -16,4 +16,14 @@ public class ChanceTest {
 		
 		assertThat(result, is(greaterThanOrEqualTo(0)));
 	}
+	
+	@Test
+	public void shouldComputeSimpleScore() {
+		
+		ScoringStrategy underTest = ScoringStrategies.chance();
+		
+		int result = underTest.compute(86);
+		
+		assertThat(result, is(86));
+	}
 }
