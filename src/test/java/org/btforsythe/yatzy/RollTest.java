@@ -11,9 +11,13 @@ public class RollTest {
 
 	private Roll underTest;
 
+	private final int[] dieRolls = {1, 2, 3, 4, 5};
+
+	private int[] actualRolls;
+	
 	@Before
 	public void setup() {
-		underTest = new Roll(1, 2, 3, 4, 5);
+		underTest = new Roll(dieRolls);
 	}
 	
 	@Test
@@ -27,11 +31,21 @@ public class RollTest {
 	@Test
 	public void shouldScoreUsingStrategy() {
 
-		final int expectedScore = 42;
+		int expectedScore = 42;
 		ScoringStrategy strategy = (rolls) -> { return expectedScore; };
 
 		int result = underTest.score(strategy);
 
 		assertThat(result, is(expectedScore));
+	}
+	
+	@Test
+	public void shouldSupplyRollsToStrategy() {
+
+		ScoringStrategy strategy = (rolls) -> { actualRolls = rolls; return -1; };
+
+		underTest.score(strategy);
+
+		assertThat(actualRolls, is(dieRolls));
 	}
 }

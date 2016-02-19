@@ -2,11 +2,14 @@ package org.btforsythe.yatzy;
 
 public class Roll {
 
-	public Roll(int... dice) {
+	private int[] dieRolls;
+
+	public Roll(int... dieRolls) {
+		this.dieRolls = dieRolls;
 	}
 
 	public int score(ScoringStrategy using) {
-		return using.compute();
+		return using.compute(dieRolls);
 	}
 
 }
