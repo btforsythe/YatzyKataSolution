@@ -10,12 +10,35 @@ public class RollTest {
 
 	@Test
 	public void shouldScore() {
-		
+
 		Roll underTest = new Roll(1, 2, 3, 4, 5);
-		ScoringStrategy strategy = new ScoringStrategy() {};
-		
+		ScoringStrategy strategy = new ScoringStrategy() {
+			@Override
+			public int compute(int... rolls) {
+				return 0;
+			}
+		};
+
 		int result = underTest.score(strategy);
-		
+
 		assertThat(result, is(greaterThanOrEqualTo(0)));
+	}
+
+	@Test
+	public void shouldScoreUsingStrategy() {
+
+		Roll underTest = new Roll(1, 2, 3, 4, 5);
+		final int expectedScore = 42;
+
+		ScoringStrategy strategy = new ScoringStrategy() {
+			@Override
+			public int compute(int... rolls) {
+				return expectedScore;
+			}
+		};
+
+		int result = underTest.score(strategy);
+
+		assertThat(result, is(expectedScore));
 	}
 }

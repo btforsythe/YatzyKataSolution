@@ -6,7 +6,7 @@ public class Roll {
 	}
 
 	public int score(ScoringStrategy using) {
-		return 0;
+		return using.compute();
 	}
 
 }
