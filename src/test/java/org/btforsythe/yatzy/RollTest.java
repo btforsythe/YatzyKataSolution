@@ -4,22 +4,22 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class RollTest {
 
+	private Roll underTest;
+
+	@Before
+	public void setup() {
+		underTest = new Roll(1, 2, 3, 4, 5);
+	}
+	
 	@Test
 	public void shouldScore() {
 
-		Roll underTest = new Roll(1, 2, 3, 4, 5);
-		ScoringStrategy strategy = new ScoringStrategy() {
-			@Override
-			public int compute(int... rolls) {
-				return 0;
-			}
-		};
-
-		int result = underTest.score(strategy);
+		int result = underTest.score((rolls) -> { return 0;});
 
 		assertThat(result, is(greaterThanOrEqualTo(0)));
 	}
@@ -27,15 +27,8 @@ public class RollTest {
 	@Test
 	public void shouldScoreUsingStrategy() {
 
-		Roll underTest = new Roll(1, 2, 3, 4, 5);
 		final int expectedScore = 42;
-
-		ScoringStrategy strategy = new ScoringStrategy() {
-			@Override
-			public int compute(int... rolls) {
-				return expectedScore;
-			}
-		};
+		ScoringStrategy strategy = (rolls) -> { return expectedScore; };
 
 		int result = underTest.score(strategy);
 
