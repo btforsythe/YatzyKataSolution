@@ -28,4 +28,15 @@ public class ChanceTest {
 		
 		assertThat(result, is(dieRoll));
 	}
+	
+	@Test
+	public void shouldComputeScoreAsSum() {
+		
+		ScoringStrategy underTest = new Chance();
+		
+		int[] dieRollsSummingTo6 = {1, 2, 3};
+		int result = underTest.compute(dieRollsSummingTo6);
+		
+		assertThat(result, is(6));
+	}
 }

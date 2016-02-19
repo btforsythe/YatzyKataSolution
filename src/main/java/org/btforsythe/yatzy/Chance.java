@@ -1,8 +1,10 @@
 package org.btforsythe.yatzy;
 
+import static java.util.Arrays.stream;
+
 public class Chance implements ScoringStrategy {
 	@Override
 	public int compute(int... rolls) {
-		return 42;
+		return stream(rolls).sum();
 	}
 }
