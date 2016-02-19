@@ -12,8 +12,6 @@ public class RollTest {
 	private Roll underTest;
 
 	private final int[] dieRolls = {1, 2, 3, 4, 5};
-
-	private int[] actualRolls;
 	
 	@Before
 	public void setup() {
@@ -42,10 +40,22 @@ public class RollTest {
 	@Test
 	public void shouldSupplyRollsToStrategy() {
 
-		ScoringStrategy strategy = (rolls) -> { actualRolls = rolls; return -1; };
+		ScoringStrategySpy strategy = new ScoringStrategySpy();
 
 		underTest.score(strategy);
 
-		assertThat(actualRolls, is(dieRolls));
+		assertThat(strategy.actualRolls, is(dieRolls));
+	}
+	
+	private class ScoringStrategySpy implements ScoringStrategy {
+
+		int[] actualRolls;
+		
+		@Override
+		public int compute(int... rolls) {
+			actualRolls = rolls;
+			return -1;
+		}
+		
 	}
 }
