@@ -1,7 +1,12 @@
 package org.btforsythe.yatzy;
 
-public interface Roll {
+public class Roll {
 
-	int score();
+	public Roll(int... dice) {
+	}
+
+	public int score(ScoringStrategy using) {
+		return 0;
+	}
 
 }
