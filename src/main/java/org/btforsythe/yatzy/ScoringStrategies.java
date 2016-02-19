@@ -1,9 +1,11 @@
 package org.btforsythe.yatzy;
 
+import static java.util.Arrays.stream;
+
 public class ScoringStrategies {
 
 	public static ScoringStrategy chance() {
-		return (rolls) -> { return rolls.length > 0? rolls[0]: 0;};
+		return (rolls) -> { return stream(rolls).sum(); };
 	}
 
 }
