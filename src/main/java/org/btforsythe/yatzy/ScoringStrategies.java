@@ -10,8 +10,8 @@ public class ScoringStrategies {
 		};
 	}
 
-	public static ScoringStrategy twoOfAKind() {
-		return new TwoOfAKind();
+	public static ScoringStrategy pair() {
+		return new Pair();
 	}
 
 }

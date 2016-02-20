@@ -6,13 +6,13 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TwoOfAKindTest {
+public class PairTest {
 
 	private ScoringStrategy underTest;
 
 	@Before
 	public void setup() {
-		underTest = ScoringStrategies.twoOfAKind();
+		underTest = ScoringStrategies.pair();
 	}
 
 	@Test

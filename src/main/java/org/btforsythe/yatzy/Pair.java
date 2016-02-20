@@ -1,6 +1,6 @@
 package org.btforsythe.yatzy;
 
-public class TwoOfAKind implements ScoringStrategy {
+public class Pair implements ScoringStrategy {
 
 	@Override
 	public int compute(int... rolls) {
