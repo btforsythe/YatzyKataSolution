@@ -16,4 +16,14 @@ public class TwoOfAKindTest {
 
 		assertThat(result, is(0));
 	}
+
+	@Test
+	public void shouldScorePairOfThrees() {
+
+		ScoringStrategy underTest = ScoringStrategies.twoOfAKind();
+
+		int result = underTest.compute(1, 2, 3, 4, 3);
+
+		assertThat(result, is(3 + 3));
+	}
 }

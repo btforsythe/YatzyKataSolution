@@ -12,7 +12,9 @@ public class ScoringStrategies {
 
 	public static ScoringStrategy twoOfAKind() {
 		return (rolls) -> {
-			return 0;
+			return stream(rolls).filter(e -> {
+				return e == 3;
+			}).count() >= 2 ? 3 * 2 : 0;
 		};
 	}
 
