@@ -13,7 +13,7 @@ public class ScoringStrategies {
 	}
 
 	public static ScoringStrategy twoPairs() {
-		return rolls -> 0;
+		return new TwoPairs();
 	}
 
 }

@@ -19,4 +19,14 @@ public class TwoPairsTest {
 
 		assertThat(result, is(0));
 	}
+
+	@Test
+	public void shouldScore2sAnd3s() {
+
+		ScoringStrategy underTest = ScoringStrategies.twoPairs();
+
+		int result = underTest.compute(3, 3, 2, 1, 2);
+
+		assertThat(result, is((3 * 2) + (2 * 2)));
+	}
 }
