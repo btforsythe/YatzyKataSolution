@@ -33,4 +33,8 @@ public class DieRollStream {
 		return Arrays.stream(rolls).boxed()
 				.collect(toMap(e -> e, e -> 1, (original, increment) -> original + increment));
 	}
+
+	public int countWithPips(int pips) {
+		return mapCounts().getOrDefault(pips, 0);
+	}
 }

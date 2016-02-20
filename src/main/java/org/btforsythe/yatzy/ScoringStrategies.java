@@ -1,11 +1,13 @@
 package org.btforsythe.yatzy;
 
-import static java.util.Arrays.stream;
+import static org.btforsythe.yatzy.DieRollStream.stream;
+
+import java.util.Arrays;
 
 public class ScoringStrategies {
 
 	public static ScoringStrategy chance() {
-		return rolls -> stream(rolls).sum();
+		return rolls -> Arrays.stream(rolls).sum();
 	}
 
 	public static ScoringStrategy pair() {
@@ -14,6 +16,10 @@ public class ScoringStrategies {
 
 	public static ScoringStrategy twoPairs() {
 		return new TwoPairs();
+	}
+
+	public static ScoringStrategy diceWithPips(int pips) {
+		return rolls -> stream(rolls).countWithPips(pips) * 2;
 	}
 
 }
