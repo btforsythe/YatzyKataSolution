@@ -3,14 +3,20 @@ package org.btforsythe.yatzy;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TwoOfAKindTest {
 
+	private ScoringStrategy underTest;
+
+	@Before
+	public void setup() {
+		underTest = ScoringStrategies.twoOfAKind();
+	}
+
 	@Test
 	public void shouldScoreZero() {
-
-		ScoringStrategy underTest = ScoringStrategies.twoOfAKind();
 
 		int result = underTest.compute(1, 2, 3, 4, 5);
 
@@ -20,10 +26,17 @@ public class TwoOfAKindTest {
 	@Test
 	public void shouldScorePairOfThrees() {
 
-		ScoringStrategy underTest = ScoringStrategies.twoOfAKind();
-
 		int result = underTest.compute(1, 2, 3, 4, 3);
 
 		assertThat(result, is(3 + 3));
+	}
+
+	@Test
+	public void shouldScoreHighestPair() {
+
+		int highest = 4;
+		int result = underTest.compute(1, 3, 3, highest, highest);
+
+		assertThat(result, is(highest + highest));
 	}
 }
