@@ -22,11 +22,16 @@ public class DieRollStream {
 	}
 
 	public IntStream pairs() {
-		return collectPairs().stream().mapToInt(Integer::intValue);
+		return collectGroupsContainingAtLeast(2).stream().mapToInt(Integer::intValue);
 	}
 
-	private Set<Integer> collectPairs() {
-		return mapCounts().entrySet().stream().filter(e -> e.getValue() > 1).map(Entry::getKey).collect(toSet());
+	private Set<Integer> collectGroupsContainingAtLeast(int groupSize) {
+		return mapCounts().entrySet().stream().filter(e -> e.getValue() >= groupSize).map(Entry::getKey)
+				.collect(toSet());
+	}
+
+	public int fourOfAKind() {
+		return collectGroupsContainingAtLeast(4).stream().findFirst().orElse(0);
 	}
 
 	private Map<Integer, Integer> mapCounts() {

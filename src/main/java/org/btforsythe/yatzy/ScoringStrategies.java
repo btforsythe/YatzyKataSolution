@@ -23,7 +23,7 @@ public class ScoringStrategies {
 	}
 
 	public static ScoringStrategy fourOfAKind() {
-		return rolls -> stream(rolls).countWithPips(6) >= 4 ? 6 * 4 : 0;
+		return rolls -> stream(rolls).fourOfAKind() * 4;
 	}
 
 }

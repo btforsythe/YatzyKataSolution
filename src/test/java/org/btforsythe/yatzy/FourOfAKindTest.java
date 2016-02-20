@@ -26,4 +26,14 @@ public class FourOfAKindTest {
 
 		assertThat(result, is(6 * 4));
 	}
+
+	@Test
+	public void shouldScore5sWhenThereAreMoreThan4() {
+
+		ScoringStrategy underTest = ScoringStrategies.fourOfAKind();
+
+		int result = underTest.compute(5, 5, 5, 5, 5);
+
+		assertThat(result, is(5 * 4));
+	}
 }
