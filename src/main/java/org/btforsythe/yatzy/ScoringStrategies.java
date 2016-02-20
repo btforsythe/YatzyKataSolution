@@ -22,4 +22,8 @@ public class ScoringStrategies {
 		return rolls -> stream(rolls).countWithPips(pips) * pips;
 	}
 
+	public static ScoringStrategy fourOfAKind() {
+		return rolls -> 0;
+	}
+
 }
