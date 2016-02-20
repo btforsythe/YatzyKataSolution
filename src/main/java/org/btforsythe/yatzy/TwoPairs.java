@@ -7,11 +7,14 @@ public class TwoPairs implements ScoringStrategy {
 	@Override
 	public int compute(int... rolls) {
 
-		if (stream(rolls).pairs().count() == 2) {
-			return 10;
+		if (pairCountIn(rolls) < 2) {
+			return 0;
 		}
+		return stream(rolls).pairs().sum() * 2;
+	}
 
-		return 0;
+	private long pairCountIn(int... rolls) {
+		return stream(rolls).pairs().count();
 	}
 
 }

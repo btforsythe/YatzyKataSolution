@@ -3,6 +3,7 @@ package org.btforsythe.yatzy;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -11,9 +12,15 @@ import org.junit.Test;
  */
 public class TwoPairsTest {
 
+	private ScoringStrategy underTest;
+
+	@Before
+	public void setup() {
+		underTest = ScoringStrategies.twoPairs();
+	}
+
 	@Test
 	public void shouldScoreOnePairAsZero() {
-		ScoringStrategy underTest = ScoringStrategies.twoPairs();
 
 		int result = underTest.compute(3, 3, 3, 1, 2);
 
@@ -23,10 +30,16 @@ public class TwoPairsTest {
 	@Test
 	public void shouldScore2sAnd3s() {
 
-		ScoringStrategy underTest = ScoringStrategies.twoPairs();
-
 		int result = underTest.compute(3, 3, 2, 1, 2);
 
-		assertThat(result, is((3 * 2) + (2 * 2)));
+		assertThat(result, is((2 * 2) + (3 * 2)));
+	}
+
+	@Test
+	public void shouldScore3sAnd4s() {
+
+		int result = underTest.compute(3, 3, 4, 1, 4);
+
+		assertThat(result, is((3 * 2) + (4 * 2)));
 	}
 }
