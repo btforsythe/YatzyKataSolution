@@ -5,13 +5,15 @@ import static java.util.Arrays.stream;
 public class ScoringStrategies {
 
 	public static ScoringStrategy chance() {
-		return (rolls) -> {
-			return stream(rolls).sum();
-		};
+		return rolls -> stream(rolls).sum();
 	}
 
 	public static ScoringStrategy pair() {
 		return new Pair();
+	}
+
+	public static ScoringStrategy twoPairs() {
+		return rolls -> 0;
 	}
 
 }
