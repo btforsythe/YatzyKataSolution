@@ -26,4 +26,14 @@ public class SameNumberOfPipsTest {
 
 		assertThat(result, is(2));
 	}
+
+	@Test
+	public void shouldScoreFours() {
+
+		ScoringStrategy underTest = ScoringStrategies.diceWithPips(4);
+
+		int result = underTest.compute(2, 3, 4, 5, 4);
+
+		assertThat(result, is(4 + 4));
+	}
 }

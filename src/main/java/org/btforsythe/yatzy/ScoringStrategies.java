@@ -19,7 +19,7 @@ public class ScoringStrategies {
 	}
 
 	public static ScoringStrategy diceWithPips(int pips) {
-		return rolls -> stream(rolls).countWithPips(pips) * 2;
+		return rolls -> stream(rolls).countWithPips(pips) * pips;
 	}
 
 }
