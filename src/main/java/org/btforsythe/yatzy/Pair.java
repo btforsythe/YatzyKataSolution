@@ -1,13 +1,13 @@
 package org.btforsythe.yatzy;
 
-import static org.btforsythe.yatzy.DieRollStream.stream;
+import static org.btforsythe.yatzy.DieRollsParser.parse;
 
 public class Pair implements ScoringStrategy {
 
 	@Override
 	public int compute(int... rolls) {
 
-		int highestPair = stream(rolls).pairs().max().orElse(0);
+		int highestPair = parse(rolls).pairs().max().orElse(0);
 
 		return highestPair * 2;
 	}

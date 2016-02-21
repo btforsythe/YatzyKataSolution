@@ -9,15 +9,15 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-public class DieRollStream {
+public class DieRollsParser {
 
-	public static DieRollStream stream(int... rolls) {
-		return new DieRollStream(rolls);
+	public static DieRollsParser parse(int... rolls) {
+		return new DieRollsParser(rolls);
 	}
 
 	private int[] rolls;
 
-	public DieRollStream(int... rolls) {
+	public DieRollsParser(int... rolls) {
 		this.rolls = rolls;
 	}
 

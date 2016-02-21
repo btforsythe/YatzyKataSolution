@@ -1,6 +1,6 @@
 package org.btforsythe.yatzy;
 
-import static org.btforsythe.yatzy.DieRollStream.stream;
+import static org.btforsythe.yatzy.DieRollsParser.parse;
 
 public class TwoPairs implements ScoringStrategy {
 
@@ -10,11 +10,11 @@ public class TwoPairs implements ScoringStrategy {
 		if (pairCountIn(rolls) < 2) {
 			return 0;
 		}
-		return stream(rolls).pairs().sum() * 2;
+		return parse(rolls).pairs().sum() * 2;
 	}
 
 	private long pairCountIn(int... rolls) {
-		return stream(rolls).pairs().count();
+		return parse(rolls).pairs().count();
 	}
 
 }
