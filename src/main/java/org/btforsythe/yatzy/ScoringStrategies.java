@@ -23,11 +23,15 @@ public class ScoringStrategies {
 	}
 
 	public static ScoringStrategy fourOfAKind() {
-		return rolls -> parse(rolls).fourOfAKind() * 4;
+		return nOfAKind(4);
+	}
+
+	private static ScoringStrategy nOfAKind(int n) {
+		return rolls -> parse(rolls).nOfAKind(n) * n;
 	}
 
 	public static ScoringStrategy threeOfAKind() {
-		return rolls -> 0;
+		return nOfAKind(3);
 	}
 
 }

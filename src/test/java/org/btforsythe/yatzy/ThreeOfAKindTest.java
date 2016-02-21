@@ -15,4 +15,13 @@ public class ThreeOfAKindTest {
 
 		assertThat(result, is(0));
 	}
+
+	@Test
+	public void shouldScoreThrees() {
+		ScoringStrategy underTest = ScoringStrategies.threeOfAKind();
+
+		int result = underTest.compute(1, 3, 3, 2, 3);
+
+		assertThat(result, is(3 * 3));
+	}
 }

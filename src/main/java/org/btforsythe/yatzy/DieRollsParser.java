@@ -30,8 +30,8 @@ public class DieRollsParser {
 				.collect(toSet());
 	}
 
-	public int fourOfAKind() {
-		return collectGroupsContainingAtLeast(4).stream().findFirst().orElse(0);
+	public int nOfAKind(int n) {
+		return collectGroupsContainingAtLeast(n).stream().findFirst().orElse(0);
 	}
 
 	private Map<Integer, Integer> mapCounts() {
