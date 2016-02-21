@@ -3,14 +3,20 @@ package org.btforsythe.yatzy;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class FourOfAKindTest {
 
+	private ScoringStrategy underTest;
+
+	@Before
+	public void setup() {
+		underTest = ScoringStrategies.fourOfAKind();
+	}
+
 	@Test
 	public void shouldScoreZero() {
-
-		ScoringStrategy underTest = ScoringStrategies.fourOfAKind();
 
 		int result = underTest.compute(1, 1, 1, 2, 2);
 
@@ -20,8 +26,6 @@ public class FourOfAKindTest {
 	@Test
 	public void shouldScore6s() {
 
-		ScoringStrategy underTest = ScoringStrategies.fourOfAKind();
-
 		int result = underTest.compute(6, 6, 6, 6, 2);
 
 		assertThat(result, is(6 * 4));
@@ -29,8 +33,6 @@ public class FourOfAKindTest {
 
 	@Test
 	public void shouldScore5sWhenThereAreMoreThan4() {
-
-		ScoringStrategy underTest = ScoringStrategies.fourOfAKind();
 
 		int result = underTest.compute(5, 5, 5, 5, 5);
 
