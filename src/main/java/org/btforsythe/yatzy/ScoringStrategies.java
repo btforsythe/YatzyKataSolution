@@ -26,4 +26,8 @@ public class ScoringStrategies {
 		return rolls -> parse(rolls).fourOfAKind() * 4;
 	}
 
+	public static ScoringStrategy threeOfAKind() {
+		return rolls -> 0;
+	}
+
 }
