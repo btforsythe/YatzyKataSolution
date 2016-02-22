@@ -34,4 +34,8 @@ public class ScoringStrategies {
 		return nOfAKind(3);
 	}
 
+	public static ScoringStrategy yatzy() {
+		return ScoringStrategy.NULL;
+	}
+
 }
