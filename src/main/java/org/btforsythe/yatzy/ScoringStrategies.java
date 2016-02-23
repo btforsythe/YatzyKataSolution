@@ -1,8 +1,11 @@
 package org.btforsythe.yatzy;
 
+import static java.util.Arrays.asList;
 import static org.btforsythe.yatzy.DieRollsParser.parse;
+import static org.btforsythe.yatzy.ScoringStrategy.NULL;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class ScoringStrategies {
 
@@ -36,6 +39,10 @@ public class ScoringStrategies {
 
 	public static ScoringStrategy yatzy() {
 		return rolls -> parse(rolls).nOfAKind(5) > 0? 50: 0;
+	}
+
+	public static ScoringStrategy smallStraight() {
+		return rolls -> Arrays.stream(rolls).boxed().collect(Collectors.toList()).equals(asList(1, 2, 3, 4, 5))? 15: 0;
 	}
 
 }
