@@ -35,7 +35,7 @@ public class ScoringStrategies {
 	}
 
 	public static ScoringStrategy yatzy() {
-		return ScoringStrategy.NULL;
+		return rolls -> parse(rolls).nOfAKind(5) > 0? 50: 0;
 	}
 
 }

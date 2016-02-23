@@ -17,4 +17,12 @@ public class YatzyTest {
 		assertThat(result, is(0));
 	}
 
-}
+	@Test
+	public void shouldScoreYatzyForFours() {
+
+		ScoringStrategy underTest = ScoringStrategies.yatzy();
+
+		int result = underTest.compute(4, 4, 4, 4, 4);
+
+		assertThat(result, is(50));
+	}}
